@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://cnyw6py4lfg3d"]
+
+[ext_resource type="Script" uid="uid://cl3ljfhpwg8x1" path="res://scripts/Player.gd" id="1_rp4yl"]
+[ext_resource type="Texture2D" uid="uid://dn308l2k5t42q" path="res://sprites/banana/Banana.png" id="2_n8m4k"]
+[ext_resource type="PackedScene" uid="uid://cp4h503fseqhy" path="res://scenes/Weapon.tscn" id="3_weapon"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1"]
+radius = 12.0
+height = 32.0
+
+[node name="Player" type="CharacterBody2D"]
+collision_mask = 6
+script = ExtResource("1_rp4yl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_n8m4k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_1")
+
+[node name="WeaponHolder" type="Node2D" parent="."]
+position = Vector2(15, 0)
+
+[node name="Weapon" parent="WeaponHolder" instance=ExtResource("3_weapon")]
+scale = Vector2(0.1, 0.1)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+process_mode = 3
+zoom = Vector2(1.5, 1.5)
+limit_smoothed = true
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true

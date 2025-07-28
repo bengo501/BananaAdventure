@@ -1,0 +1,95 @@
+[gd_scene load_steps=10 format=3 uid="uid://5n4fy53ber2c"]
+
+[ext_resource type="PackedScene" uid="uid://cnyw6py4lfg3d" path="res://scenes/Player.tscn" id="1_player"]
+[ext_resource type="Texture2D" uid="uid://r4hy4f6sqrl4" path="res://sprites/background/j1.png" id="2_bg1"]
+[ext_resource type="Texture2D" uid="uid://tif2iha7widl" path="res://sprites/background/j2.png" id="3_bg2"]
+[ext_resource type="Texture2D" uid="uid://vjkqmmiqt1g7" path="res://sprites/background/j3.png" id="4_bg3"]
+[ext_resource type="Texture2D" uid="uid://dq4dpwjqgd3ny" path="res://sprites/background/j4.png" id="5_bg4"]
+[ext_resource type="PackedScene" uid="uid://cfqknuekcreb3" path="res://scenes/Platform.tscn" id="6_platform"]
+[ext_resource type="PackedScene" path="res://scenes/PauseMenu.tscn" id="7_pause"]
+[ext_resource type="PackedScene" path="res://scenes/GameOver.tscn" id="8_over"]
+[ext_resource type="PackedScene" path="res://scenes/HUD.tscn" id="9_hud"]
+
+[node name="Main" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer1" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.2, 0.2)
+motion_mirroring = Vector2(1152, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer1"]
+scale = Vector2(2, 2)
+texture = ExtResource("2_bg1")
+centered = false
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.4, 0.4)
+motion_mirroring = Vector2(1152, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+scale = Vector2(2, 2)
+texture = ExtResource("3_bg2")
+centered = false
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.6, 0.6)
+motion_mirroring = Vector2(1152, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+scale = Vector2(2, 2)
+texture = ExtResource("4_bg3")
+centered = false
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.8, 0.8)
+motion_mirroring = Vector2(1152, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
+scale = Vector2(2, 2)
+texture = ExtResource("5_bg4")
+centered = false
+
+[node name="Player" parent="." instance=ExtResource("1_player")]
+position = Vector2(405, 176)
+
+[node name="StartingPlatform" parent="." instance=ExtResource("6_platform")]
+position = Vector2(576, 400)
+
+[node name="Platform1" parent="." instance=ExtResource("6_platform")]
+position = Vector2(400, 300)
+
+[node name="Platform2" parent="." instance=ExtResource("6_platform")]
+position = Vector2(787, 530)
+
+[node name="Platform3" parent="." instance=ExtResource("6_platform")]
+position = Vector2(97, 456)
+
+[node name="Platform4" parent="." instance=ExtResource("6_platform")]
+position = Vector2(282, 520)
+
+[node name="Platform5" parent="." instance=ExtResource("6_platform")]
+position = Vector2(202, 294)
+
+[node name="Platform6" parent="." instance=ExtResource("6_platform")]
+position = Vector2(600, 263)
+
+[node name="Platform7" parent="." instance=ExtResource("6_platform")]
+position = Vector2(807, 362)
+
+[node name="Platform8" parent="." instance=ExtResource("6_platform")]
+position = Vector2(540, 532)
+
+[node name="Platform9" parent="." instance=ExtResource("6_platform")]
+position = Vector2(811, 207)
+
+[node name="Platform10" parent="." instance=ExtResource("6_platform")]
+position = Vector2(982, 264)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="UI" instance=ExtResource("9_hud")]
+
+[node name="PauseMenu" parent="UI" instance=ExtResource("7_pause")]
+
+[node name="GameOver" parent="UI" instance=ExtResource("8_over")]

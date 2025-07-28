@@ -1,0 +1,94 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8mhxusxr4j8m"]
+
+[ext_resource type="Script" path="res://scripts/HUD.gd" id="1_hud"]
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hud")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Stats" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Health" type="HBoxContainer" parent="MarginContainer/Stats"]
+layout_mode = 2
+
+[node name="Heart1" type="Label" parent="MarginContainer/Stats/Health"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "❤️"
+
+[node name="Heart2" type="Label" parent="MarginContainer/Stats/Health"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "❤️"
+
+[node name="Heart3" type="Label" parent="MarginContainer/Stats/Health"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "❤️"
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/Stats"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Ammo" type="Label" parent="MarginContainer/Stats"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "🔫 10/10"
+
+[node name="VSeparator2" type="VSeparator" parent="MarginContainer/Stats"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Coins" type="Label" parent="MarginContainer/Stats"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "🪙 0"
+
+[node name="VSeparator3" type="VSeparator" parent="MarginContainer/Stats"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Kills" type="Label" parent="MarginContainer/Stats"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "☠️ 0"
+
+[node name="ReloadTimer" type="Timer" parent="."]
+wait_time = 60.0
+one_shot = true
+
+[node name="ReloadingLabel" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.5
+offset_top = -11.5
+offset_right = 43.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "Reloading..." 
