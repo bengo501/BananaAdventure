@@ -73,12 +73,14 @@ position = Vector2(202, 294)
 
 [node name="Platform11" parent="." instance=ExtResource("6_platform")]
 position = Vector2(329, 294)
+rotation = -3.14159
 
 [node name="Platform12" parent="." instance=ExtResource("6_platform")]
 position = Vector2(455, 294)
 
 [node name="Platform13" parent="." instance=ExtResource("6_platform")]
 position = Vector2(583, 294)
+rotation = -3.14159
 
 [node name="Platform6" parent="." instance=ExtResource("6_platform")]
 position = Vector2(1126, 342)
@@ -96,7 +98,6 @@ position = Vector2(811, 207)
 position = Vector2(982, 264)
 
 [node name="UI" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="HUD" parent="UI" instance=ExtResource("9_hud")]
 

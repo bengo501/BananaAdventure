@@ -5,6 +5,8 @@ const JUMP_VELOCITY = -400.0
 const ACCELERATION = 1500.0
 const FRICTION = 1000.0
 const RELOAD_LABEL = preload("res://scenes/ReloadLabel.tscn")
+const GLOCK_SCENE = preload("res://scenes/Glock.tscn")
+const SHOTGUN_SCENE = preload("res://scenes/Shotgun.tscn")
 
 # Coyote time and jump buffer variables
 const COYOTE_TIME = 0.15
@@ -18,6 +20,9 @@ var health = 3
 var coins = 0
 var kills = 0
 var reload_label = null
+var current_weapon = null
+var weapons = []
+var current_weapon_index = 0
 
 func _ready():
 	# Initialize HUD
@@ -32,12 +37,33 @@ func _ready():
 	add_child(reload_label)
 	reload_label.hide()
 	
-	# Conectar sinais da arma
-	var weapon = $WeaponHolder/Weapon
-	if weapon:
-		weapon.reload_started.connect(_on_reload_started)
-		weapon.reload_completed.connect(_on_reload_completed)
-		weapon.reload_progress.connect(_on_reload_progress)
+	# Inicializar armas
+	weapons = [GLOCK_SCENE, SHOTGUN_SCENE]
+	equip_weapon(0)  # Começa com a Glock
+
+func _input(event):
+	if event.is_action_pressed("switch_weapon"):
+		switch_weapon()
+
+func switch_weapon():
+	current_weapon_index = (current_weapon_index + 1) % weapons.size()
+	equip_weapon(current_weapon_index)
+
+func equip_weapon(index):
+	# Remove a arma atual se existir
+	if current_weapon:
+		current_weapon.queue_free()
+	
+	# Instancia a nova arma
+	current_weapon = weapons[index].instantiate()
+	$WeaponHolder.add_child(current_weapon)
+	
+	# Conecta os sinais da nova arma
+	current_weapon.reload_started.connect(_on_reload_started)
+	current_weapon.reload_completed.connect(_on_reload_completed)
+	current_weapon.reload_progress.connect(_on_reload_progress)
+	
+	print("Equipou " + current_weapon.weapon_name)
 
 func _physics_process(delta):
 	# Add the gravity
@@ -86,11 +112,12 @@ func _physics_process(delta):
 	if position.y > 1000:  # Fell off the map
 		die()
 		
-	# Handle reload input
-	if Input.is_action_just_pressed("reload"):
-		var weapon = $WeaponHolder/Weapon
-		if weapon:
-			weapon.start_reload()
+	# Handle shooting and reload input
+	if Input.is_action_just_pressed("shoot") and current_weapon:
+		current_weapon.shoot()
+	
+	if Input.is_action_just_pressed("reload") and current_weapon:
+		current_weapon.start_reload()
 
 func _on_reload_started():
 	if reload_label:

@@ -1,0 +1,52 @@
+[gd_scene load_steps=9 format=3 uid="uid://c7g6v2p4n8j7m"]
+
+[ext_resource type="PackedScene" uid="uid://bo0p56322dbjr" path="res://scenes/BaseWeapon.tscn" id="1_base"]
+[ext_resource type="Script" uid="uid://bs613cqpicx07" path="res://scripts/Glock.gd" id="2_glock"]
+[ext_resource type="Texture2D" uid="uid://b1t37c6uh13mg" path="res://sprites/weapons/tile000.png" id="4_pbceo"]
+[ext_resource type="Texture2D" uid="uid://ggqofgd58xm8" path="res://sprites/weapons/tile001.png" id="5_udre2"]
+[ext_resource type="Texture2D" uid="uid://bbt7j7vpo0u5s" path="res://sprites/weapons/tile002.png" id="6_u54rv"]
+[ext_resource type="Texture2D" uid="uid://dfdhl1ygeksy1" path="res://sprites/weapons/tile003.png" id="7_ej411"]
+[ext_resource type="Texture2D" uid="uid://2x8uf11jnj2h" path="res://sprites/weapons/tile004.png" id="8_edxa1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_pbceo")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_pbceo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_udre2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_u54rv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ej411")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_edxa1")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 10.0
+}]
+
+[node name="Glock" instance=ExtResource("1_base")]
+scale = Vector2(2, 2)
+script = ExtResource("2_glock")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_1")
+animation = &"idle"
+
+[node name="BulletSpawn" type="Marker2D" parent="." index="1"]
+position = Vector2(20, -1)

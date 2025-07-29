@@ -1,0 +1,81 @@
+[gd_scene load_steps=15 format=3 uid="uid://4uo5am46mjl5"]
+
+[ext_resource type="PackedScene" uid="uid://bo0p56322dbjr" path="res://scenes/BaseWeapon.tscn" id="1_base"]
+[ext_resource type="Script" uid="uid://cam6x27gnb4mw" path="res://scripts/Shotgun.gd" id="2_shotgun"]
+[ext_resource type="Texture2D" uid="uid://cxdagh6wulkg4" path="res://scenes/tile000.png" id="4_ydkmf"]
+[ext_resource type="Texture2D" uid="uid://cvc8g3n2v74gm" path="res://scenes/tile001.png" id="5_gpwkb"]
+[ext_resource type="Texture2D" uid="uid://b3xpxrj7s8hvw" path="res://scenes/tile002.png" id="6_yh1yg"]
+[ext_resource type="Texture2D" uid="uid://c3hlbjrb7leqh" path="res://scenes/tile003.png" id="7_yr63k"]
+[ext_resource type="Texture2D" uid="uid://ldwiyb4xkxsr" path="res://scenes/tile004.png" id="8_fdjs2"]
+[ext_resource type="Texture2D" uid="uid://d1ytrgd4jjh61" path="res://scenes/tile005.png" id="9_p1tes"]
+[ext_resource type="Texture2D" uid="uid://d04hysigb200p" path="res://scenes/tile006.png" id="10_xdtbx"]
+[ext_resource type="Texture2D" uid="uid://c6sr6d4pg7376" path="res://scenes/tile007.png" id="11_8v53t"]
+[ext_resource type="Texture2D" uid="uid://drcenff6l8qw3" path="res://scenes/tile008.png" id="12_wrjns"]
+[ext_resource type="Texture2D" uid="uid://cqauxmu4ugkq8" path="res://scenes/tile009.png" id="13_mby7l"]
+[ext_resource type="Texture2D" uid="uid://l7sfutb4ss7v" path="res://scenes/tile010.png" id="14_yjy1l"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_ydkmf")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_p1tes")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_xdtbx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_8v53t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_wrjns")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_mby7l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_yjy1l")
+}],
+"loop": false,
+"name": &"reload",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_gpwkb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_yh1yg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_yr63k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_fdjs2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_p1tes")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 10.0
+}]
+
+[node name="Shotgun" instance=ExtResource("1_base")]
+scale = Vector2(2, 2)
+script = ExtResource("2_shotgun")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_1")
+animation = &"idle"
+
+[node name="BulletSpawn" type="Marker2D" parent="." index="1"]
+position = Vector2(25, -1)
