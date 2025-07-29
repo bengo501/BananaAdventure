@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c8q6v2p4n8j7m"]
 
-[ext_resource type="Script" path="res://scripts/Enemy.gd" id="1_k3m2n"]
-[ext_resource type="Texture2D" path="res://sprites/monkey/monkey.png" id="2_l4m5n"]
+[ext_resource type="Script" uid="uid://dv5ro3s5rc0e6" path="res://scripts/Enemy.gd" id="1_k3m2n"]
+[ext_resource type="Texture2D" uid="uid://ibki05p5nxs1" path="res://sprites/monkey/monkey.png" id="2_l4m5n"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1"]
 radius = 16.0
@@ -23,10 +23,9 @@ shape = SubResource("CapsuleShape2D_1")
 
 [node name="DetectionArea" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
 shape = SubResource("CircleShape2D_1")
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
-[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"] 
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

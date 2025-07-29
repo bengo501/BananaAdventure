@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c8mhxusxr4j8m"]
 
-[ext_resource type="Script" path="res://scripts/AmmoPickup.gd" id="1_ammo"]
+[ext_resource type="Script" uid="uid://dbba5ew4446xv" path="res://scripts/AmmoPickup.gd" id="1_ammo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1"]
 radius = 16.0
@@ -29,4 +29,4 @@ theme_override_font_sizes/font_size = 32
 text = "🔫"
 horizontal_alignment = 1
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"] 
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -4,6 +4,7 @@ const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 const ACCELERATION = 1500.0
 const FRICTION = 1000.0
+const RELOAD_LABEL = preload("res://scenes/ReloadLabel.tscn")
 
 # Coyote time and jump buffer variables
 const COYOTE_TIME = 0.15
@@ -16,6 +17,7 @@ var was_on_floor = false
 var health = 3
 var coins = 0
 var kills = 0
+var reload_label = null
 
 func _ready():
 	# Initialize HUD
@@ -24,6 +26,18 @@ func _ready():
 		hud.update_health(health)
 		hud.update_coins(coins)
 		hud.update_kills(kills)
+		
+	# Criar e configurar a label de reload
+	reload_label = RELOAD_LABEL.instantiate()
+	add_child(reload_label)
+	reload_label.hide()
+	
+	# Conectar sinais da arma
+	var weapon = $WeaponHolder/Weapon
+	if weapon:
+		weapon.reload_started.connect(_on_reload_started)
+		weapon.reload_completed.connect(_on_reload_completed)
+		weapon.reload_progress.connect(_on_reload_progress)
 
 func _physics_process(delta):
 	# Add the gravity
@@ -74,9 +88,24 @@ func _physics_process(delta):
 		
 	# Handle reload input
 	if Input.is_action_just_pressed("reload"):
-		var hud = get_node("/root/Main/UI/HUD")
-		if hud:
-			hud.start_reload()
+		var weapon = $WeaponHolder/Weapon
+		if weapon:
+			weapon.start_reload()
+
+func _on_reload_started():
+	if reload_label:
+		reload_label.show()
+		print("Player: Mostrando label de reload")
+
+func _on_reload_completed():
+	if reload_label:
+		reload_label.hide()
+		print("Player: Escondendo label de reload")
+
+func _on_reload_progress(percent):
+	if reload_label:
+		reload_label.get_node("Label").text = "Recarregando... " + str(percent) + "%"
+		print("Player: Atualizando progresso do reload: ", percent, "%")
 
 func take_damage():
 	health -= 1

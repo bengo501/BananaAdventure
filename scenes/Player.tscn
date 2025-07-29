@@ -21,7 +21,7 @@ texture = ExtResource("2_n8m4k")
 shape = SubResource("CapsuleShape2D_1")
 
 [node name="WeaponHolder" type="Node2D" parent="."]
-position = Vector2(15, 0)
+position = Vector2(23, 5)
 
 [node name="Weapon" parent="WeaponHolder" instance=ExtResource("3_weapon")]
 scale = Vector2(0.1, 0.1)

@@ -6,10 +6,6 @@ var max_ammo = 10
 var current_ammo = 10
 var coins = 0
 var kills = 0
-var is_reloading = false
-
-func _ready():
-	$ReloadTimer.timeout.connect(_on_reload_timer_timeout)
 
 func update_health(new_health):
 	current_health = new_health
@@ -20,6 +16,7 @@ func update_health(new_health):
 func update_ammo(new_ammo):
 	current_ammo = new_ammo
 	$MarginContainer/Stats/Ammo.text = "🔫 " + str(current_ammo) + "/" + str(max_ammo)
+	print("HUD: Munição atualizada para ", current_ammo)
 
 func update_coins(new_coins):
 	coins = new_coins
@@ -27,19 +24,4 @@ func update_coins(new_coins):
 
 func update_kills(new_kills):
 	kills = new_kills
-	$MarginContainer/Stats/Kills.text = "☠️ " + str(kills)
-
-func start_reload():
-	if not is_reloading and current_ammo < max_ammo:
-		is_reloading = true
-		$ReloadingLabel.show()
-		$ReloadTimer.start()
-
-func _on_reload_timer_timeout():
-	is_reloading = false
-	current_ammo = max_ammo
-	update_ammo(current_ammo)
-	$ReloadingLabel.hide()
-
-func can_shoot():
-	return current_ammo > 0 and not is_reloading 
+	$MarginContainer/Stats/Kills.text = "☠️ " + str(kills) 

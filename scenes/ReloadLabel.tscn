@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://b8mhxusxr4kam"]
+
+[node name="ReloadLabel" type="Node2D"]
+position = Vector2(0, -176)
+
+[node name="Label" type="Label" parent="."]
+offset_right = 152.0
+offset_bottom = 28.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 20
+text = "Recarregando..."
+horizontal_alignment = 1
+vertical_alignment = 1

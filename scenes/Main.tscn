@@ -6,9 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://vjkqmmiqt1g7" path="res://sprites/background/j3.png" id="4_bg3"]
 [ext_resource type="Texture2D" uid="uid://dq4dpwjqgd3ny" path="res://sprites/background/j4.png" id="5_bg4"]
 [ext_resource type="PackedScene" uid="uid://cfqknuekcreb3" path="res://scenes/Platform.tscn" id="6_platform"]
-[ext_resource type="PackedScene" path="res://scenes/PauseMenu.tscn" id="7_pause"]
-[ext_resource type="PackedScene" path="res://scenes/GameOver.tscn" id="8_over"]
-[ext_resource type="PackedScene" path="res://scenes/HUD.tscn" id="9_hud"]
+[ext_resource type="PackedScene" uid="uid://c8mhxusxr4j7m" path="res://scenes/PauseMenu.tscn" id="7_pause"]
+[ext_resource type="PackedScene" uid="uid://dcsvrbioe8rb6" path="res://scenes/GameOver.tscn" id="8_over"]
+[ext_resource type="PackedScene" uid="uid://b8mhxusxr4j8m" path="res://scenes/HUD.tscn" id="9_hud"]
 
 [node name="Main" type="Node2D"]
 
@@ -57,7 +57,7 @@ position = Vector2(405, 176)
 position = Vector2(576, 400)
 
 [node name="Platform1" parent="." instance=ExtResource("6_platform")]
-position = Vector2(400, 300)
+position = Vector2(1254, 417)
 
 [node name="Platform2" parent="." instance=ExtResource("6_platform")]
 position = Vector2(787, 530)
@@ -71,8 +71,17 @@ position = Vector2(282, 520)
 [node name="Platform5" parent="." instance=ExtResource("6_platform")]
 position = Vector2(202, 294)
 
+[node name="Platform11" parent="." instance=ExtResource("6_platform")]
+position = Vector2(329, 294)
+
+[node name="Platform12" parent="." instance=ExtResource("6_platform")]
+position = Vector2(455, 294)
+
+[node name="Platform13" parent="." instance=ExtResource("6_platform")]
+position = Vector2(583, 294)
+
 [node name="Platform6" parent="." instance=ExtResource("6_platform")]
-position = Vector2(600, 263)
+position = Vector2(1126, 342)
 
 [node name="Platform7" parent="." instance=ExtResource("6_platform")]
 position = Vector2(807, 362)
@@ -87,6 +96,7 @@ position = Vector2(811, 207)
 position = Vector2(982, 264)
 
 [node name="UI" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="HUD" parent="UI" instance=ExtResource("9_hud")]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c8mhxusxr4j7m"]
 
-[ext_resource type="Script" path="res://scripts/PauseMenu.gd" id="1_pause"]
+[ext_resource type="Script" uid="uid://bofk8okk6vy2f" path="res://scripts/PauseMenu.gd" id="1_pause"]
 
 [node name="PauseMenu" type="Control"]
 process_mode = 3
@@ -59,4 +59,4 @@ text = "Quit to Menu"
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"] 
+[connection signal="pressed" from="CenterContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
