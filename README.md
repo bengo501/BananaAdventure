@@ -33,7 +33,7 @@ A 2D platformer game made with Godot where you play as a banana with a gun, tryi
 - **Reload**: R
 - **Pause**: ESC
 
-## 🛠Built With
+## Built With
 
 - Godot Engine 4.2
 - GDScript
